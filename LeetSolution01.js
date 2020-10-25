@@ -12,6 +12,22 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 
+let nums = [2,7,11,15]
+let target = 9
+
 let twoSum = (nums, target) => {
+    let valueLocation = {}
+
+    for (let i = 0; i < nums.length; i++) {
+        let currentValue = nums[i]
+
+        if (valueLocation[currentValue] != undefined) {
+            return [valueLocation[currentValue], i]
+        }
+
+        valueLocation[target - currentValue] = i
+    }
 
 }
+
+twoSum(nums, target)
