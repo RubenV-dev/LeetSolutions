@@ -11,6 +11,7 @@
 // Input: l1 = [2,4,3], l2 = [5,6,4]
 // Output: [7,0,8]
 // Explanation: 342 + 465 = 807.
+// _______________________________________________________________________________________________________________________________
 
 //We will need to read the linked list from the end to the beginning and extract the number that we will be adding.
 //we will do this by traversing the linkedList and adding each node to a string.
@@ -47,14 +48,28 @@ const traverseList = (list) => {
   }
   return stringedNumber
 }
-//addFunc will add two strings in a way that is very similar to the long addition we would do in elementary school.
+//addFunc will add two strings in a way that is very similar to the long addition we would do in elementary school. we start at the end
+//of a given string and add numbers, if the value is greater than 1 digit, we take the the last value, put it into our solution
+//and carry over any left over into the next values that we add.
+// Example: 254
+//        + 123
+//        ______
+//          377
+
+// IMPORTANT: Reason to use the addFunc is because of javascripts MAX_SAFE_INTEGER which is the largest number it can display before
+// implicitly converts the number to e-notation ex: 8.6 * e^20. This function allows us to take large inputs and allows the program
+// to scale well.
 const addFunc = (str1, str2) => {
     let sum = ""
+    //make sure the str2 is the longest string which always gets placed on top when adding. if its not, switch the value of str1 and 2
     if (str2.length > str1.length) {
         let temp = str2
         str2 = str1
         str1 = temp
     }
+    //carry will hold anything carried over when adding, a and b hold the current value for each string that we add, temp holds
+    // the temporary sum of a and b as well as the carry, sumdigit will be the number that gets passed into the solution each time 
+    // as long as we arent at the end of str1, if we are then we will add the temp value because there are no more numbers to add. 
     let carry = 0
     let a;
     let b;
@@ -71,5 +86,6 @@ const addFunc = (str1, str2) => {
  
         sum = (i === str1.length - 1) ? temp + sum : sumDigit + sum
     }
+    console.log(sum)
     return sum;
  }
