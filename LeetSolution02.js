@@ -48,6 +48,18 @@ const traverseList = (list) => {
   }
   return stringedNumber
 }
+//addTwo Numbers takes two linkedLists. It will traverse it using the traverseList function and save it to memory. We will
+//add the two strings using the addFunc function. Once we have the answer we will reverse its order and make it into a linkedList.
+var addTwoNumbers = function(l1, l2) {
+    let revL1String = traverseList(l1)
+    let revL2String = traverseList(l2) 
+    let stringSum = addFunc(revL1String, revL2String)
+    let reverseSumArr = stringSum.split("").reverse()
+    return linkedList(reverseSumArr)
+
+};
+
+
 //addFunc will add two strings in a way that is very similar to the long addition we would do in elementary school. we start at the end
 //of a given string and add numbers, if the value is greater than 1 digit, we take the the last value, put it into our solution
 //and carry over any left over into the next values that we add.
