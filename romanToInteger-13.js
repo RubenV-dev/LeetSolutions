@@ -44,6 +44,7 @@
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 var romanToInt = function(s) {
+    //First I set up a hashmap that will contain the roman numerals and their corresponding value.
     let romanToInt = {
         I : 1,
         V : 5,
@@ -53,16 +54,27 @@ var romanToInt = function(s) {
         D : 500,
         M : 1000
     }
-    
+    //total will be the place where we add the values that we decode from the roman numerals.
     let total = 0
     
     for (let i = 0; i < s.length; i++) {
+        //here we have two pointers, the current index will give us a value once its passed into our romanToInt
+        //hash and the second pointer is pointing to the next index's value
         let currentInt = romanToInt[s[i]]
         let nextInt = romanToInt[s[i + 1]]
-        
+        //we continue to check for nextInt as we iterate. When we reach the end of the string there wont be 
+        // a nextInt and when that is undefined then we will stop iterating and simply add the currentInt to
+        // the total
         if (nextInt) {
+            //As we traverse the string, we check to see if the currentInt is more than or equal to the nextInt.
+            // This is to check for those 6 cases where Roman numerals like IV = 4 and IX = 9. If it is more
+            // or equal we add it to the total.
             if (currentInt >= nextInt) {
                 total += currentInt
+            // if the nextInt is more than the currentInt then we have one of the 6 special cases where we must
+            // look at two roman numerals together and use their difference to reprsent the value of the roman numerals
+            // in the provided string. We take their difference and increment i by 1. In the next loop the i increments
+            // by 1 again which allows us to start from an unused roman numeral.
             } else {
                 total += (nextInt - currentInt)
                 i++
