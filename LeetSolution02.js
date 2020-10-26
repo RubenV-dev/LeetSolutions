@@ -57,8 +57,7 @@ var addTwoNumbers = function(l1, l2) {
     let reverseSumArr = stringSum.split("").reverse()
     return linkedList(reverseSumArr)
 
-};
-
+}
 
 //addFunc will add two strings in a way that is very similar to the long addition we would do in elementary school. we start at the end
 //of a given string and add numbers, if the value is greater than 1 digit, we take the the last value, put it into our solution
@@ -98,6 +97,5 @@ const addFunc = (str1, str2) => {
  
         sum = (i === str1.length - 1) ? temp + sum : sumDigit + sum
     }
-    console.log(sum)
     return sum;
  }
