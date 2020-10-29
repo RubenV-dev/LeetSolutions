@@ -26,6 +26,7 @@
 // Input: s = "A", numRows = 1
 // Output: "A"
 
+//need to add an explanation here
 let convert = function(s, numRows) {
     let length = s.length
     let returnString = ""
