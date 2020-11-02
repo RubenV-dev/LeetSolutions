@@ -46,3 +46,34 @@
 // Constraints:
 
 // 1 <= num <= 3999
+
+//Our approach to this problem will be to continuously subtract the largest value in our array
+// from a given number while simultanously adding the corresponding Roman Numeral to 
+// our returnedString. 
+
+let intToRoman = (num) => {
+    //the lengths of our numerals and numeralValues will be constant and will not change
+    //regardless of how large of an input number we are given.
+    let numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    let numeralValues = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    
+    //we initialize our variable that will hold the roman numeral string
+    let returnedString = ""
+    
+    //we can either iterate the numerals array or the numeralValues Array, it doesnt 
+    // make a difference since the lengths of both arrays are the same. It is also 
+    // important to note that both roman numeral and its value are associated by index
+    // from each array.
+    // Ex. numerals[0] =>  "M", numeralValues[0] => 1000, 
+    for (let i = 0; i < numerals.length; i++) {
+        // in each iteration we will subtract the currentValue while adding the corresponding
+        // romanNumeral to our returnedString. We will continue to subract until our num 
+        // is less than or equal to 0.
+        while (num - numeralValues[i] >= 0) {    
+            returnedString += numerals[i]
+            num -= numeralValues[i]  
+        }
+    }
+    
+    return returnedString
+};
