@@ -24,8 +24,7 @@ let longestPalindrome = (s) => {
             end = right
         }
     }
-    console.log(s.slice(start, end + 1))
-    return s.substr(start, end + 1)
+    return s.slice(start, end + 1)
 
 
 }
