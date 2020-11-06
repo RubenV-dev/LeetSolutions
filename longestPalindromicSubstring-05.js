@@ -106,8 +106,12 @@ let expandFromIndex = (s, left, right) => {
 }
 
 // Ex: "cbbc"
-// longestPalindrome("bba")
+longestPalindrome("bba")
 // longestPalindrome("abbc")
 // longestPalindrome("racecar")
 // longestPalindrome("babbac")
 // longestPalindrome("attab")
+
+// "bab" Length left 0, right 2    right - left + 1
+
+// "baab"
